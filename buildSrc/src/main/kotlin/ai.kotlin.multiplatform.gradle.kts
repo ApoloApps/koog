@@ -1,7 +1,10 @@
 //import ai.grazie.gradle.tests.setupKarmaConfigs
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import ai.grazie.gradle.publish.maven.configureJvmJarManifest
 import ai.grazie.gradle.tests.configureTests
 import jetbrains.sign.GpgSignSignatoryProvider
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
 
@@ -23,6 +26,12 @@ kotlin {
             binaries.library()
         }
 
+        configureTests()
+    }
+    wasmJs {
+        browser {
+            binaries.library()
+        }
         configureTests()
     }
 }
